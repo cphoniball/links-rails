@@ -7,6 +7,7 @@ gem 'rails', '~> 6.0.0'
 gem 'sqlite3', '~> 1.4'
 gem 'pg'
 gem 'puma', '~> 3.11'
+gem 'pry'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5'
@@ -30,6 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
