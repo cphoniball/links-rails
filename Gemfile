@@ -8,6 +8,7 @@ gem 'sqlite3', '~> 1.4'
 gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'pry'
+gem 'factory_bot_rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5'
@@ -20,7 +21,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
