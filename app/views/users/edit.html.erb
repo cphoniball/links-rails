@@ -1,1 +1,5 @@
-<h2>This is the edit user page</h2>
+<div class="w-2/3 mb-4 mx-auto">
+    <h2 class="text-3xl font-medium">Edit user <%= @user.username %></h2>
+    <%= link_to '< Back to Users', users_path %>
+    <%= render 'form' %>
+</div>

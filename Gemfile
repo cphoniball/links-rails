@@ -7,7 +7,7 @@ gem 'rails', '~> 6.0.0'
 gem 'sqlite3', '~> 1.4'
 gem 'pg'
 gem 'puma', '~> 3.11'
-gem 'pry'
+gem 'pry-rails'
 gem 'factory_bot_rails'
 
 # Use SCSS for stylesheets

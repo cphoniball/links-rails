@@ -1,0 +1,5 @@
+<% type ||= 'text_field' %>
+<div class="mb-4 w-100">
+    <%= form.label field, label, { class: "inline-block w-1/4 text-right pr-3 font-medium" } %>
+    <%= form.send(type, field, { class: "inline-block w-2/3 border px-3 py-2" }) %>
+</div>

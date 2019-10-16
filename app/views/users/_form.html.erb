@@ -1,0 +1,19 @@
+<% if @user.errors.any? %>
+    <div class="bg-red-300 border-red-500 p-3 mb-3 rounded shadow">
+        <p class="mb-2">There were errors that prevented this user from being created.</p>
+        <ul>
+            <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+<%= form_with model: @user, local: true, class: "border rounded shadow p-4" do |f| %>
+    <%= render 'text_field', form: f, field: :username, label: "Username" %>
+    <%= render 'text_field', type: 'email_field', form: f, field: :email, label: "Email" %>
+    <%= render 'text_field', type: 'password_field', form: f, field: :password, label: "Password" %>
+    <%= render 'text_field', type: 'password_field', form: f, field: :password_confirmation, label: "Confirm Password" %>
+    <div class="flex flex-row-reverse">
+        <%= f.submit "Create User", { class: "px-3 py-2 bg-blue-600 border text-white" } %>
+    </div>
+<% end %>
