@@ -1,0 +1,45 @@
+<div class="flex justify-between">
+    <%= link_to "< Back to all link pages", link_pages_path %>
+    <%= link_to 'Edit', edit_link_page_path(@link_page), { class: 'text-blue-600' } %>
+</div>
+
+<div class="shadow border rounded mt-4">
+    <header class="flex justify-between p-4 bg-gray-100 border-b border-color-gray">
+        <span class="text-xl font-semibold"><%= @link_page.name %></span>
+        <span class="text-gray-600"><%= @link_page.slug %></span>
+    </header>
+    <div class="p-4">
+        <%= form_with url: link_page_links_path(@link_page), model: @link do |f| %>
+            <%= f.text_field :name, placeholder: "Link Name", class: "border px-3 py-2 w-full block mb-3" %>
+            <div class="flex">
+                <div class="border px-3 py-2 bg-gray-100">https://</div>
+                <%= f.text_field :url, placeholder: "example.com", class: "border px-3 py-2 block mb-3 flex-1" %>
+            </div>
+            <%= f.submit "Add Link", { class: "px-3 py-2 bg-blue-600 border text-white w-full" } %>
+        <% end %>
+        <div class="mt-4">
+            <% if @link_page.links.persisted.empty? %>
+                <span>You haven't added any links to this page yet.</span>
+            <% else %>
+                <h2 class="text-xl font-semibold mb-3">Links</h2>
+                <ul>
+                    <% @link_page.links.persisted.each do |link| %>
+                        <li class="p-1 flex justify-between">
+                            <span>
+                                <strong class="font-semibold"><%= link.name %></strong> <%= link.url %>
+                            </span>
+                            <div>
+                                <a href="<%= link.url %>">
+                                    <%= fa_icon "external-link-square-alt", class: "text-blue-700" %>
+                                </a>
+                                <%= link_to link_path(link), method: :delete, remote: true do %>
+                                    <%= fa_icon "trash", class: "text-red-700" %>
+                                <% end %>
+                            </div>
+                        </li>
+                    <% end %>
+                </ul>
+            <% end %>
+        </div>
+    </div>
+</div>

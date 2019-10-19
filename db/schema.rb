@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_18_214917) do
+ActiveRecord::Schema.define(version: 2019_10_16_152025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "link_pages", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_link_pages_on_user_id"
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.bigint "link_page_id"
+    t.string "name"
+    t.string "url", limit: 2048
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["link_page_id"], name: "index_links_on_link_page_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -23,4 +41,6 @@ ActiveRecord::Schema.define(version: 2019_08_18_214917) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "link_pages", "users"
+  add_foreign_key "links", "link_pages"
 end

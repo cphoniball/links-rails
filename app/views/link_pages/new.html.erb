@@ -1,0 +1,10 @@
+<div class="w-2/3 mb-4 mx-auto">
+    <h2 class="text-3xl font-medium">Create Link Page</h2>
+    <%= form_with model: @link_page, local: true, class: "border rounded shadow p-4" do |f| %>
+        <%= render 'text_field', form: f, field: :name, label: "Name" %>
+        <%= render 'text_field', form: f, field: :slug, label: "Slug" %>
+        <div class="flex flex-row-reverse">
+            <%= f.submit "Create Link Page", { class: "px-3 py-2 bg-blue-600 border text-white" } %>
+        </div>
+    <% end %>
+</div>

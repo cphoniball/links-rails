@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if (@user.save)
+    if @user.save
       # TODO: Add flash message
       redirect_to users_path
     else
