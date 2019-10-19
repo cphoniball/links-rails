@@ -7,8 +7,9 @@ gem 'rails', '~> 6.0.0'
 gem 'sqlite3', '~> 1.4'
 gem 'pg'
 gem 'puma', '~> 3.11'
-gem 'pry-rails'
-gem 'factory_bot_rails'
+gem 'pry-rails' # TODO: Move this to development/test?
+gem 'factory_bot_rails' # TODO: Move this to development/test?
+gem 'devise'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5'
