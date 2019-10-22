@@ -1,5 +1,7 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <div>
+    <%= link_to "Log in", new_session_path(resource_name), class: "block px-3 py-2 bg-gray-100 border w-full text-center" %><br />
+  </div>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>

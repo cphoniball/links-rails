@@ -1,17 +1,20 @@
-<h2>Sign up</h2>
+<h2 class="text-2xl font-semibold text-center mb-4">Sign up</h2>
 
+<%# TODO: Decorate this form with stimulus to prevent submissions before you fill out the form %>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="mb-3">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email Address", class: "py-2 px-3 border" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email Address", class: "py-2 px-3 border w-full" %>
   </div>
   <div class="mb-3">
-    <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "py-2 px-3 border" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "py-2 px-3 border w-full" %>
   </div>
-  <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password", class: "py-2 px-3 border" %>
+  <div class="mb-3">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password", class: "py-2 px-3 border w-full" %>
+  </div>
 
-  <div class="actions">
+  <div class="mb-5">
     <%= f.submit "Sign up", class: "px-3 py-2 bg-blue-600 border text-white w-full" %>
   </div>
 <% end %>
