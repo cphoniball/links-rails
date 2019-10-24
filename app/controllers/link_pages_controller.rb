@@ -1,4 +1,6 @@
 class LinkPagesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @link_pages = LinkPage.all
   end
