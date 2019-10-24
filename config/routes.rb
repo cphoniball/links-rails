@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "pages#home"
-  # TODO: This overlaps with the devise registration routes, move this into a /admin nested resource
+  get "/link_page/:slug", to: "pages#link_page"
+  get "/link/:id/visit", to: "links#visit", as: :visit_link
+
   resources :link_pages, shallow: true do
     resources :links
   end

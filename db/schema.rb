@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_24_225521) do
+ActiveRecord::Schema.define(version: 2019_10_24_230656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 2019_10_24_225521) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["slug"], name: "index_link_pages_on_slug", unique: true
     t.index ["user_id"], name: "index_link_pages_on_user_id"
+  end
+
+  create_table "link_visits", force: :cascade do |t|
+    t.bigint "link_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["link_id"], name: "index_link_visits_on_link_id"
   end
 
   create_table "links", force: :cascade do |t|
@@ -48,5 +55,6 @@ ActiveRecord::Schema.define(version: 2019_10_24_225521) do
   end
 
   add_foreign_key "link_pages", "users"
+  add_foreign_key "link_visits", "links"
   add_foreign_key "links", "link_pages"
 end

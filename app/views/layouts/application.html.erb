@@ -15,7 +15,7 @@
       <h1 class="text-4xl font-bold"><%= link_to "Link Pages", root_path %></h1>
       <nav class="">
         <% if current_user %>
-          <%= link_to "Users", users_path, class: "pr;-3 font-semibold text-teal-800" %>
+          <%= link_to "My Account", users_path, class: "pr;-3 font-semibold text-teal-800" %>
           <%= link_to "Link Pages", link_pages_path, class: "font-semibold text-teal-800" %>
           <%# TODO: The logout link doesn't reload the page when remote: true is enabled %>
           <%= link_to "Log Out", destroy_user_session_path, method: :delete, remote: true, class: "font-semibold text-teal-800" %>

@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:visit]
 
   def index
   end
@@ -19,6 +19,7 @@ class LinksController < ApplicationController
     redirect_to link_page_path(link.link_page)
   end
 
+  # TODO: Remove the ability to edit or update a link
   def edit
   end
 
@@ -26,9 +27,20 @@ class LinksController < ApplicationController
   end
 
   def destroy
+    # TODO: Before action to find the links
     link = Link.find(params[:id])
     link.delete
     redirect_to link_page_path(link.link_page)
+  end
+
+  def visit
+    link = Link.find(params[:id])
+
+    if link
+      redirect_to LinkService.visit(link)
+    else
+      render '404'
+    end
   end
 
   private
