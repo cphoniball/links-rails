@@ -1,8 +1,10 @@
 import consumer from "./consumer"
 
 const createLinkPageChannel = (linkPageId, options) => {
-  // TODO: How to pass link page ID here
-  return consumer.subscriptions.create("LinkPageChannel", options);
+  return consumer.subscriptions.create(
+    { channel: "LinkPageChannel", link_page: linkPageId },
+    options
+  );
 };
 
 export default createLinkPageChannel;

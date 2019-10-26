@@ -1,7 +1,8 @@
 class LinkPageChannel < ApplicationCable::Channel
   def subscribed
     # TODO: Stream from the specific link page that connected
-    stream_from "link_page"
+    stream_from "link_page_#{params[:link_page]}"
+    puts "Streaming from link_page_#{params[:link_page]}"
   end
 
   def unsubscribed

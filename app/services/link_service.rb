@@ -4,7 +4,10 @@ class LinkService
     # sent to their link?
     link.link_visits.create
 
-    ActionCable.server.broadcast("link_page", { visit_count: link.link_page.visit_count })
+    ActionCable.server.broadcast(
+      "link_page_#{link.link_page.id}",
+      { visit_count: link.link_page.visit_count }
+    )
 
     # TODO: What's the best way to handle redirecting the user here?
     # Having a controller concern in this feels like too much

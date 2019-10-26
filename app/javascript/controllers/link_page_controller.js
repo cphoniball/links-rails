@@ -6,14 +6,15 @@ export default class extends Controller {
   static targets = ["visitCount"];
 
   connect() {
-    // TODO: Get the actual link page id from stimulus
-    createLinkPageChannel(1, {
-      received: (data) => {
-        this.setVisitCount(data.visit_count);
+    this.channel = createLinkPageChannel(this.data.get('id'), {
+      received: ({ visit_count }) => {
+        this.setVisitCount(visit_count);
       }
     });
+  }
 
-    // TODO: Unsubscribe from the channel when this stimulus controller unmounts?
+  disconnect() {
+    // TODO: Disconnect from the channel when we unmount this controller
   }
 
   setVisitCount(count) {
