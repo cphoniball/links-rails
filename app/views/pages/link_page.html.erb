@@ -6,7 +6,11 @@
 <ul class="text-center">
     <% @link_page.links.each do |link| %>
         <li class="mb-2">
-            <%= link_to link.name, visit_link_path(link), class: "block px-3 py-2 border shadow hover:bg-blue-200" %>
+            <%= link_to link.name,
+                visit_link_path(link),
+                data: { turbolinks: false },
+                class: "block px-3 py-2 border shadow hover:bg-blue-200"
+            %>
         </li>
     <% end %>
 </ul>
