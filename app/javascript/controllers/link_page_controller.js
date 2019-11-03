@@ -14,7 +14,7 @@ export default class extends Controller {
   }
 
   disconnect() {
-    // TODO: Disconnect from the channel when we unmount this controller
+    this.channel.unsubscribe();
   }
 
   setVisitCount(count) {
