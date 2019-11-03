@@ -1,12 +1,14 @@
 class LinkPagesController < ApplicationController
   before_action :authenticate_user!
 
+  before_action :find_link_page, only: [:show, :edit]
+  before_action :authorize_user, only: [:show, :edit]
+
   def index
-    @link_pages = LinkPage.all
+    @link_pages = LinkPage.where(user: current_user)
   end
 
   def show
-    @link_page = LinkPage.find(params[:id])
     @link = @link_page.links.build
   end
 
@@ -15,11 +17,10 @@ class LinkPagesController < ApplicationController
   end
 
   def create
-    link_page = LinkPage.new(link_page_params)
-    # TODO: Set the user based on the currently authenticated user after authentication is added
-    link_page.user = User.find(1)
+    @link_page = LinkPage.new(link_page_params)
+    @link_page.user = current_user
 
-    if link_page.save
+    if @link_page.save
       redirect_to link_pages_path
     else
       render 'new'
@@ -27,7 +28,6 @@ class LinkPagesController < ApplicationController
   end
 
   def edit
-    @link_page = LinkPage.find(params[:id])
   end
 
   def update
@@ -42,5 +42,13 @@ class LinkPagesController < ApplicationController
       params
         .require(:link_page)
         .permit(:name, :slug)
+    end
+
+    def find_link_page
+      @link_page = LinkPage.find(params[:id])
+    end
+
+    def authorize_user
+      redirect_to link_pages_path unless @link_page.user == current_user
     end
 end
