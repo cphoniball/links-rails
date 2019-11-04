@@ -19,6 +19,11 @@
         </span>
     </header>
     <div class="p-4">
+        <% if @link_page.visit_count > 0 %>
+            <div class="mb-3">
+                <%= line_chart @link_page.link_visits.group_by_day(:created_at).count %>
+            </div>
+        <% end %>
         <%= form_with url: link_page_links_path(@link_page), model: @link do |f| %>
             <%= f.text_field :name, placeholder: "Link Name", class: "border px-3 py-2 w-full block mb-3" %>
             <div class="flex mb-3">

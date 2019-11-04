@@ -10,6 +10,8 @@ gem 'puma', '~> 3.11'
 gem 'pry-rails' # TODO: Move this to development/test?
 gem 'factory_bot_rails' # TODO: Move this to development/test?
 gem 'devise'
+gem 'chartkick'
+gem 'groupdate'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5'
