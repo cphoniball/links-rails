@@ -3,6 +3,9 @@
     <%= link_to 'Edit', edit_link_page_path(@link_page), { class: 'text-blue-600' } %>
 </div>
 
+<% if @link_page.background_image.present? %>
+    <img src="<%= url_for(@link_page.background_image) %>" alt="Link page background image">
+<% end %>
 <div data-controller="link-page" data-link-page-id="<%= @link_page.id %>" class="shadow border rounded mt-4">
     <header class="p-4 bg-gray-100 border-b border-color-gray">
         <div class="flex justify-between">

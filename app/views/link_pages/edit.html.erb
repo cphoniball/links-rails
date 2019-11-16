@@ -1,1 +1,26 @@
-<p>Placeholder for the link page edit</p>
+<div class="shadow border rounded mt-4 p-4">
+    <h2 class="text-3xl font-medium">Edit Link Page</h2>
+    <%= form_with model: @link_page, local: true do |f| %>
+        <%= render 'text_field', form: f, field: :name, label: "Name" %>
+        <%= render 'text_field', form: f, field: :slug, label: "Slug" %>
+        <div
+            data-controller="file-upload"
+            data-action="click->file-upload#open"
+            class="mb-4 bg-gray-200 p-5 border shadow rounded text-center cursor-pointer"
+        >
+            <span class="text-gray-900" data-target="file-upload.fileName">Choose a file</span>
+            <%=
+                f.file_field :background_image, {
+                    class: 'hidden',
+                    data: {
+                        target: "file-upload.input",
+                        action: "input->file-upload#setUploadedFilename"
+                    }
+                }
+            %>
+        </div>
+        <div class="flex flex-row-reverse">
+            <%= f.submit "Update Link Page", { class: "px-3 py-2 bg-blue-600 border text-white" } %>
+        </div>
+    <% end %>
+</div>

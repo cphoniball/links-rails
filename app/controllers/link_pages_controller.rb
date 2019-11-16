@@ -1,8 +1,8 @@
 class LinkPagesController < ApplicationController
   before_action :authenticate_user!
 
-  before_action :find_link_page, only: [:show, :edit]
-  before_action :authorize_user, only: [:show, :edit]
+  before_action :find_link_page, only: [:show, :edit, :update]
+  before_action :authorize_user, only: [:show, :edit, :update]
 
   def index
     @link_pages = LinkPage.where(user: current_user)
@@ -31,6 +31,12 @@ class LinkPagesController < ApplicationController
   end
 
   def update
+    # @link_page.background_image.attach(params[:background_image]) if params[:background_image]
+    if @link_page.update(link_page_params)
+      redirect_to link_page_path(@link_page)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -41,7 +47,7 @@ class LinkPagesController < ApplicationController
     def link_page_params
       params
         .require(:link_page)
-        .permit(:name, :slug)
+        .permit(:name, :slug, :background_image)
     end
 
     def find_link_page

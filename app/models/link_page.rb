@@ -3,6 +3,8 @@ class LinkPage < ApplicationRecord
   has_many :links, -> { extending Persisted }
   has_many :link_visits, through: :links
 
+  has_one_attached :background_image
+
   # TODO: Use the attributes API to set the slug instead of a hook
   before_save :set_slug
 
