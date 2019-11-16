@@ -1,16 +1,24 @@
-<header class="text-center mb-5">
-    <h2 class="text-5xl font-semibold"><%= @link_page.name %></h2>
-    <divs>Links from <%= @link_page.user.username %></divs>
-</header>
-
-<ul class="text-center">
-    <% @link_page.links.each do |link| %>
-        <li class="mb-2">
-            <%= link_to link.name,
-                visit_link_path(link),
-                data: { turbolinks: false },
-                class: "block px-3 py-2 border shadow hover:bg-blue-200"
-            %>
-        </li>
-    <% end %>
-</ul>
+<main class="relative z-10">
+    <style>
+        html {
+            background: url(<%= url_for(@link_page.background_image) %>) no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+    <header class="text-center mb-5">
+        <h2 class="text-5xl font-semibold text-white"><%= @link_page.name %></h2>
+        <div class="text-white">Links from <%= @link_page.user.username %></div>
+    </header>
+    <ul class="text-center">
+        <% @link_page.links.each do |link| %>
+            <li class="mb-2">
+                <%= link_to link.name,
+                    visit_link_path(link),
+                    data: { turbolinks: false },
+                    class: "block px-3 py-2 border shadow hover:bg-blue-200 text-white"
+                %>
+            </li>
+        <% end %>
+    </ul>
+</main>
+<div class="opacity-50 fixed inset-0 pointer-events-none bg-black z-0" />

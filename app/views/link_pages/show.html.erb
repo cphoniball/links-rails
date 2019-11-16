@@ -27,7 +27,7 @@
                 <%= line_chart @link_page.link_visits.group_by_day(:created_at).count %>
             </div>
         <% end %>
-        <%= form_with url: link_page_links_path(@link_page), model: @link do |f| %>
+        <%= form_with url: link_page_links_path(@link_page), remote: true, model: @link do |f| %>
             <%= f.text_field :name, placeholder: "Link Name", class: "border px-3 py-2 w-full block mb-3" %>
             <div class="flex mb-3">
                 <span class="border px-3 py-2 bg-gray-100 inline-block">https://</span>

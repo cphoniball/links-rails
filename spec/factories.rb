@@ -11,4 +11,10 @@ FactoryBot.define do
     name { "Link Page" }
     sequence(:slug) { |n| "link-page-#{n}" }
   end
+
+  factory :link do
+    link_page
+    sequence(:name) { "Some Link Name #{n}" }
+    sequence(:url) { |n| "https://example.com/some/path/#{n}" }
+  end
 end
