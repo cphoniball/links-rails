@@ -1,41 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>LinksRails</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <header class="p-6">
-      <h1 class="text-4xl font-bold"><%= link_to "Link Pages", root_path %></h1>
-      <nav class="">
-        <% if current_user %>
-          <%= link_to "My Profile", profile_path, class: "pr;-3 font-semibold text-teal-800" %>
-          <%= link_to "Link Pages", link_pages_path, class: "font-semibold text-teal-800" %>
-          <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "font-semibold text-teal-800" %>
-        <% else %>
-          <%= link_to "Log In", new_user_session_path, class: "pr;-3 font-semibold text-teal-800" %>
-          <%= link_to "Register", new_user_registration_path, class: "font-semibold text-teal-800" %>
-        <% end %>
-      </nav>
-      <% if notice || alert %>
-        <div class="mt-3">
-          <% if notice %>
-            <p class="notice p-3 bg-green-200"><%= notice %></p>
-          <% end %>
-          <% if alert %>
-            <p class="alert p-3 bg-red-200"><%= alert %></p>
-          <% end %>
-        </div>
+<%= render "layouts/header" %>
+<header class="p-6">
+  <h1 class="text-4xl font-bold"><%= link_to "Link Pages", root_path %></h1>
+  <nav class="">
+    <% if current_user %>
+      <%= link_to "My Profile", profile_path, class: "pr;-3 font-semibold text-teal-800" %>
+      <%= link_to "Link Pages", link_pages_path, class: "font-semibold text-teal-800" %>
+      <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "font-semibold text-teal-800" %>
+    <% else %>
+      <%= link_to "Log In", new_user_session_path, class: "pr;-3 font-semibold text-teal-800" %>
+      <%= link_to "Register", new_user_registration_path, class: "font-semibold text-teal-800" %>
+    <% end %>
+  </nav>
+  <% if notice || alert %>
+    <div class="mt-3">
+      <% if notice %>
+        <p class="notice p-3 bg-green-200"><%= notice %></p>
       <% end %>
-    </header>
-    <main class="p-8">
-      <%= yield %>
-    </main>
-  </body>
-</html>
+      <% if alert %>
+        <p class="alert p-3 bg-red-200"><%= alert %></p>
+      <% end %>
+    </div>
+  <% end %>
+</header>
+<main class="p-8">
+  <%= yield %>
+</main>
+<%= render "layouts/footer" %>

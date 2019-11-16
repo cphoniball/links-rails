@@ -11,5 +11,6 @@ class PagesController < ApplicationController
 
   def link_page
     @link_page = LinkPage.find_by(slug: params[:slug])
+    render "link_page", layout: "link_page"
   end
 end
