@@ -6,7 +6,7 @@ ruby '2.6.3'
 gem 'rails', '~> 6.0.0'
 gem 'sqlite3', '~> 1.4'
 gem 'pg'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'pry-rails' # TODO: Move this to development/test?
 gem 'factory_bot_rails' # TODO: Move this to development/test?
 gem 'devise'
